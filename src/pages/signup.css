@@ -1,0 +1,85 @@
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.errorText{
+  width: 80%;
+  background-color: rgb(212, 165, 9);
+  padding: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 1rem;
+}
+.input {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #ba8e19 100%);
+}
+.signup {
+  width: 60%;
+  height: 80vh;
+  /* border: 2px solid red; */
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid red; */
+}
+.formText {
+  width: 70%;
+  font-size: 2rem;
+  text-align: center;
+  /* border: 2px solid red; */
+}
+.signup_text {
+  font-weight: bolder;
+  text-align: center;
+}
+.inputField {
+  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 80%;
+  margin: 0.5rem;
+}
+.inputLabel {
+  margin-bottom: 0.6rem;
+}
+.input {
+  width: 80%;
+  outline: none;
+  /* border: none;
+  text-decoration: none; */
+  padding: 0.5rem;
+}
+.signupDiv {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* border: 2px solid red; */
+}
+.signupBtn {
+  /* border: 2px solid rgb(189, 156, 8); */
+  padding: 0.4rem;
+}
+.checkboxText{
+  /* border: 2px solid red; */
+  width:80%;
+  height: 6vh;
+  
+
+}
+.e-toast-container .e-toast {
+  background-color: navy;
+}

@@ -1,0 +1,30 @@
+.loginForm{
+    /* border: 2px solid red; */
+    margin-top: 5rem;
+    width: 50%;
+}
+.errorText{
+    width: 80%;
+    background-color: rgb(212, 165, 9);
+    padding: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 1rem;
+  }
+.inputField{
+    margin-top: 2rem;
+}
+.loginFormText{
+    width: 60%;
+    text-align: center;
+}
+.loginHeading{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.loginBtn{
+    /* border: 2px solid rgb(14, 143, 93); */
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
