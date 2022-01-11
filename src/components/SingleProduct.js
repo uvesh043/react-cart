@@ -7,14 +7,14 @@ function SingleProduct() {
         {
             _id: 1,
             name: "Havana Special",
-            size: "Small",
+            size: "large",
             price: "400",
             images: "../images/peproni.png"
         },
         {
             _id: 2,
             name: "Non veg pizza",
-            size: "Small",
+            size: "medium",
             price: "121",
             images: "../images/peproni.png"
         },
@@ -28,7 +28,7 @@ function SingleProduct() {
         {
             _id: 4,
             name: "Full Cream Pizza",
-            size: "Small",
+            size: "Extra Small",
             price: "400",
             images: "../images/peproni.png"
         },
@@ -71,8 +71,8 @@ function SingleProduct() {
             <div className="ml-10" >
                <h2 className=" text text-2xl font-extrabold"  >Pizza Sepecial</h2> 
                <h3 className="font-bold text-xl my-3">Medium</h3>
-               <h2 className="font-bold text-xl">$ 500</h2>
-               <button style={{ background: '#F59E0D'}} className="px-4 ml-6 mt-3 py-2 text-center w-auto rounded-2xl font-bold">Add to Cart</button>
+               <h2 className="font-bold text-xl">$500</h2>
+               <button  style={{ background: '#F59E0D'}} className="px-4 ml-6 mt-3 py-2 text-center w-auto rounded-2xl font-bold">Add to Cart</button>
             </div>
          </div>
         </div>

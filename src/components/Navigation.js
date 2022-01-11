@@ -34,11 +34,12 @@ function Navigation() {
                     <li className="ml-5 font-bold"><Link to="/product">Product</Link></li>
                     <li className="ml-5 font-bold"><Link to="/signup">Signup</Link></li>
                     <li className="ml-5 font-bold"><Link to="/login">Login</Link></li>
+                    <li className="ml-5 font-bold"><Link to="/logout">Logout</Link></li>
                     <li className="ml-5 font-bold">
                         <Link to="/cart">
                             <div style={cartStyle}>
                                 {/* <span className="pl-2">{!cart.totalItems?"":cart.totalItems}</span> */}
-                                <span className="pl-2">{!cart.totalItems ? '' : cart.totalItems}</span>
+                                {/* <span className="pl-2">{!cart.totalItems ? '' : cart.totalItems}</span> */}
                                 <img className="ml-2" src="/images/cart.png" alt="cart-icon" />
                             </div>
                         </Link>

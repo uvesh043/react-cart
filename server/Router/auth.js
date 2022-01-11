@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../Models/userSchema");
+const Cart = require("../Models/cartSchema");
 const bcryptJS = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authenticate = require("../Middelware/authenticate");
@@ -49,19 +50,18 @@ router.post("/register", async (req, res) => {
   }
 });
 router.post("/login", async (req, res) => {
-  
   const { email, password } = req.body;
   try {
     if (!email || !password) {
       return res.status(422).json({ msg: "Please fill all filed 1" });
     }
     const userExist = await User.findOne({ email: email });
-  
+
     const passwordCompareMatch = await bcryptJS.compare(
       password,
       userExist.password
     );
-    
+
     const token = await userExist.generateAuthToken();
     res.cookie("jwttoken", token, {
       expires: new Date(Date.now() + 25892000000),
@@ -74,16 +74,31 @@ router.post("/login", async (req, res) => {
     }
 
     if (!userExist) {
-      return res.status(422).json({ msg: "please creeate account  first 3" });
+      return res.status(422).json({ msg: "please creeate account  first " });
     }
     return res.status(200).json({ msg: "Login Succesfull" });
   } catch (error) {
     console.log(error);
   }
 });
-
+//Insert Cart Items
+router.get("/loadItems", async (req, res) => {
+  try {
+    const items = await Cart.findOne({});
+    console.log("This is items form server ", items);
+    return res.status(200).json({ msg: items });
+  } catch (error) {
+    return res.status(400).json({ msg: "Failed to fetch items from database" });
+  }
+});
 //Product Page
-router.get('/product',authenticate,(req,res)=>{
-    res.send(req.rootUser);
-})
+router.get("/product", authenticate, (req, res) => {
+  res.send(req.rootUser);
+});
+
+//Logout page
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwttoken", { path: "/" });
+  res.status(200).send("User Logout");
+});
 module.exports = router;

@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Typography,
@@ -17,23 +17,77 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../pages/CartContext";
 
-
 const useStyles = makeStyles((theme) => ({
-  card:{
-    border:"20px solid red",
-    width:'20vw',
-    height:'20vh'
+  container: {
+    boxShadow: "0 2px 5px 0  rgb(0 0 /20%), 0 2px 10px 0 rgb(0 0 /22%)",
+    height: "350px",
+    width: "300px",
+    display: "flex",
+    flexDirection: "column",
+
+    justifyContent: "space-between",
   },
-  cardMedia:{
-    border:"10px solid yellow",
-    width:'100px',
-    height:'100px'
+  card: {
+    backgroundColor: "#d99058",
+    backgroundImage: "linear-gradient(315deg, #d99058 0%, #f8de7e 74%)",
+    height: "320px",
+    width: "300px",
+    borderBottom: "10px solid rgb(200,205,48)",
   },
-  cardContent:{
-    border:"2px solid blue",
-  }
-  
-}))
+  image: {
+    height: "200px",
+    width: "300px",
+    justifyContent: "center",
+  },
+  imageDiv: {
+    height: "230px",
+    width: "300px",
+    objectFit: "cover",
+  },
+  title: {
+    color: "black",
+    width: "300px",
+    fontWeight: "bolder",
+  },
+  name:{
+    fontWeight:"bold"
+  },
+  dateSourceContainer: {
+    marginTop:"0.5rem",
+    marginBottom:"0.5rem",
+    fontSize:"1.5rem",
+    width: "100%",
+    display: "flex",
+   
+    justifyContent: "space-around",
+    fontWeight: "bolder",
+    fontSize:'1.4rem' 
+  },
+  size:{
+fontWeight:"bold"
+  },
+ 
+  priceDetaile: {
+    // paddingLeft:'1rem',
+    display: "flex",
+    justifyContent: "space-around",
+  },
+  showDetaile:{
+//     fontWeight:"bold",
+//     textAlign:'center',
+// width:"40vw"
+textDecoration:"underline"
+
+  },
+  bgGreen: {
+    backgroundColor: "#7ee8fa",
+    backgroundImage: "linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%)",
+  },
+  bgYellow: {
+    backgroundColor: " #f39f86",
+    backgroundImage: "linear-gradient(315deg, #f39f86 0%, #f9d976 74%)",
+  },
+}));
 function SingleProducts(props) {
   const classes = useStyles();
   const histroy = useHistory();
@@ -49,7 +103,7 @@ function SingleProducts(props) {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       setUserData(data);
       if (!res.status == 200) {
         const error = new Error(res.error);
@@ -64,11 +118,11 @@ function SingleProducts(props) {
     getUserData();
   }, []);
   const { cart, setCart } = useContext(CartContext);
-
-  const { images,name,price,size } = props.pizzaData;
-console.log("This is props",props);
+  const pizzaData = props.pizzaData;
+  // console.log("props.pizzaData",props.pizzaData);
+  const { images, name, price, size } = props.pizzaData;
   const [isAdding, setIsAdding] = useState(false);
-  // console.log(isAdding);
+
   const addToCart = (event, pizzaData) => {
     event.preventDefault();
     let _cart = { ...cart };
@@ -111,29 +165,37 @@ console.log("This is props",props);
   return (
     <>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-      <Card >
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="20"
-          image={images}
-          alt="green iguana"
-        />
-        <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="div">
-          {name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-           {}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Added
-        </Button>
-      </CardActions>
-    </Card>
+        <Card className={classes.card}>
+          <div className={classes.CardMedia}>
+            <CardMedia className={classes.image} image={images} alt="" />
+          </div>
+          <div  className={classes.dateSourceContainer}>
+            <Typography className={classes.size} variant="body2" color="textSecondary" componet="h2">
+              Size :{size}
+            </Typography>
+            <Typography className={classes.name} variant="body2" color="textSecondary" componet="h2">
+              {name}
+            </Typography>
+          </div>
+          <div className={classes.priceDetaile}>
+            <Typography className={classes.title1}>{`₹ ${price}`}</Typography>
+          <Link to={`/products/${props.pizzaData._id}`}>  <Typography color="primary" className={classes.showDetaile}>
+              Show Detailes
+            </Typography></Link>
+          </div>
+          <div className={classes.learn_more}>
+            <Button
+            
+              variant="contained"
+              className={`${isAdding ? classes.bgGreen : classes.bgYellow} `}
+              onClick={(event) => {
+                addToCart(event, pizzaData);
+              }}
+            >
+              Add
+            </Button>
+          </div>
+        </Card>
       </Grid>
     </>
   );

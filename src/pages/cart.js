@@ -1,6 +1,7 @@
 //using comtext
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../pages/CartContext";
+// import StripeCheckout from 'react-stripe-checkout'
 
 function Cart() {
   const { cart } = useContext(CartContext);
@@ -51,12 +52,13 @@ function Cart() {
   const [cartProduct, setCatProduct] = useState([]);
   // const cartProperties = Object.keys(cart.items)
   // const cartPropertiesValue = Object.entries(cart.items)
-  console.log(typeof cart.items);
+
   useEffect(() => {
     if (!cart.items) {
       return;
     }
     setCatProduct(pizzaData);
+    console.log("This is cart", cart);
   }, [cart]);
 
   return (
@@ -97,8 +99,12 @@ function Cart() {
         <b>Grand Total:</b>500
       </div>
       <div className="text-right mt-2">
+      {/* <StripeCheckout stripeKey="pk_test_51JqtdpSCuG1m0KNhBiy65N39ezCS1VYOfuBPRHs3qlyhtkC7V30p2YDNoTzg3Tbm8OMVKd69wm8CISc2llvE3kGf00ul5Zh0Y3" token={makePayment} name="Buy React" amount={product.price*100}>
+        <button className="btn" style={{color:"white",backgroundColor:"black"}}> Order Now</button> 
+        </StripeCheckout> */}
         <button className="bg-yellow-500 px-4 py-2 rounded-full leading-none">
-          Order Now
+
+          Order Now 
         </button>
       </div>
     </div>

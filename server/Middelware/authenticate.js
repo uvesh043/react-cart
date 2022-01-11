@@ -22,3 +22,9 @@ const authenticate = async (req, res, next) => {
 };
 
 module.exports = authenticate;
+
+// curl https://codeload.github.com/mui-org/material-ui/tar.gz/next | tar -xz --strip=2 material-ui-next/examples/create-react-app-with-styled-components
+// cd create-react-app-with-styled-components
+// npm install
+// npm start
+
